@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap');
+
+$font_roboto : 'Roboto', sans-serif;
+
+/*------------- color variables ------------*/
+$white: #ffffff;
+$black_dark: #000000;
+$lightgray : #909090;
+$opacityblack_04 : rgba(0,0,0,0.4);
+
+@mixin font_regular{
+    font-weight: 400;
+}
+@mixin font_medium{
+    font-weight: 500;
+}
+@mixin font_bold{
+    font-weight: 700;
+}
+@mixin font_extrabold{
+    font-weight: 900;
+}
+
+@mixin banner_text{
+    font-size: 90px;
+    line-height: 109px;
+    letter-spacing: 5.4px;
+
+    @include ipad-view{
+        font-size: 70px;
+        line-height: 89px;
+        letter-spacing: 3.5px;
+    }
+    @include tab-view{
+        font-size: 50px;
+        line-height: 60px;
+        letter-spacing: 2.4px;
+    }
+    @include mobile-view{
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+
+@mixin body_font{
+    font-size: 16px;
+    line-height: 22px;
+    @include mobile-view{
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+@mixin menu_font{
+    font-size: 80px;
+    line-height: 120px;
+    @include ipad-view{
+        font-size: 60px;
+        line-height: 100px;
+    }
+    @include tab-view{
+        font-size: 40px;
+        line-height: 80px;
+    }
+}
+
+// Resposnive media 
+$mini-screen: 1199px;
+$ipad-view: 991px;
+$tab-view: 767px;
+$mobile-view: 558px;
+$mobile-mini-view: 480px;
+
+@mixin mini-screen {
+    @media (max-width: #{$mini-screen}) {
+        @content;
+    }
+}
+@mixin ipad-view {
+    @media (max-width: #{$ipad-view}) {
+        @content;
+    }
+}
+@mixin tab-view {
+    @media (max-width: #{$tab-view}) {
+        @content;
+    }
+}
+@mixin mobile-view {
+    @media (max-width: #{$mobile-view}) {
+        @content;
+    }
+}
+@mixin mobile-mini-view {
+    @media (max-width: #{$mobile-mini-view}) {
+        @content;
+    }
+}
+
+/**/
+@for $menuItems from 0 through 4 {
+    body.menu-active .toggle_menu .toggleMenu_wrapper ul > li:nth-child(#{$menuItems + 1}) {
+        transition-delay: 0.35s * $menuItems;
+    }
+}
